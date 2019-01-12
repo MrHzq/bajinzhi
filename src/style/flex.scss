@@ -1,0 +1,24 @@
+/*
+ * @Author: hzq
+ * @Date: 2019-01-12 11:09:34
+ * @Last Modified by: hzq
+ * @Last Modified time: 2019-01-12 17:08:03
+ * @文件说明: flex布局 混入
+ */
+@mixin flex($ai: center, $jc: center, $fd: row, $fw: wrap) {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: $fw;
+    align-items: $ai;
+    -webkit-align-items: $ai;
+    justify-content: $jc;
+    -webkit-justify-content: $jc;
+    flex-direction: $fd;
+}
+@mixin flex-a {
+    @include flex($jc: space-around);
+}
+
+@mixin flex-b {
+    @include flex($jc: space-between);
+}
