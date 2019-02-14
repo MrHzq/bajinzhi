@@ -18,5 +18,12 @@ module.exports = {
         source: 'src',
         img: 'src',
         image: 'xlink:href'
-    }
+    },
+    postcss: [
+        // 转换成rem
+        // require('postcss-plugin-px2rem')({
+        //     rootValue: 40, // 根元素字体大小
+        //     mediaQuery: true
+        // })
+    ]
 }

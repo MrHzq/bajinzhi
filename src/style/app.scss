@@ -1,28 +1,125 @@
 /*
  * @Author: hzq
- * @Date: 2018-08-29 14:25:47
- * @Last Modified by: hzq
- * @Last Modified time: 2019-01-12 13:21:46
- * @文件说明: 全局sass覆盖
+ * @Date: 2019-01-28 16:04:30
+ * @Last Modified by: chenjie
+ * @Last Modified time: 2019-02-14 14:05:11
+ * @文件说明: 全局样式
  */
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'PingFang SC', 'Microsoft YaHei', '微软雅黑', 'Helvetica Neue',
-        Helvetica, 'Hiragino Sans GB', Arial, sans-serif, 'Open Sans';
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+
+//  页面宽度
+$pageWidth: 1350px;
+
+// 字体颜色
+$c3: #333;
+$c6: #666;
+$c9: #999;
+
+@mixin c3 {
+    color: $c3;
 }
-ul,
-ol {
-    list-style: none;
+@mixin c6 {
+    color: $c6;
 }
-a {
-    text-decoration: none;
+@mixin c9 {
+    color: $c9;
 }
-a:link,
-a:visited,
-a:hover,
-a:active {
-    color: #000;
+
+.c3 {
+    color: $c3;
+}
+.c6 {
+    color: $c6;
+}
+.c9 {
+    color: $c9;
+}
+
+// 字体大小
+$f20: 20px;
+$f18: 18px;
+$f16: 16px;
+$f14: 14px;
+$f12: 12px;
+
+@mixin f20 {
+    font-size: $f20;
+}
+@mixin f18 {
+    font-size: $f18;
+}
+@mixin f16 {
+    font-size: $f16;
+}
+@mixin f14 {
+    font-size: $f14;
+}
+@mixin f12 {
+    font-size: $f12;
+}
+
+.f20 {
+    font-size: $f20;
+}
+.f18 {
+    font-size: $f18;
+}
+.f16 {
+    font-size: $f16;
+}
+.f14 {
+    font-size: $f14;
+}
+.f12 {
+    font-size: $f12;
+}
+
+// 其他颜色
+$blue: #3398ff;
+$blue_a: rgba(51, 152, 255, 0.1);
+$grey: #e4e7ed; //边框、背景色
+$orange: #ee6869;
+$orange_a: rgba(238, 104, 105, 0.1);
+$green: #13ce66;
+$border: rgba(0, 0, 0, 0.04);
+$purple: #9d80eb;
+
+@mixin grey {
+    background-color: $grey;
+}
+@mixin blue {
+    color: $blue;
+}
+@mixin orange {
+    color: $orange;
+}
+@mixin green {
+    color: $green;
+}
+@mixin purple {
+    color: $purple;
+}
+.purple {
+    color: $purple;
+}
+.blue {
+    color: $blue;
+}
+.grey {
+    color: $grey;
+}
+.orange {
+    color: $orange;
+}
+.green {
+    color: $green;
+}
+.white {
+    color: #fff;
+}
+// 背景图片相关
+@mixin bgi($url, $size: cover, $p: center, $r: no-repeat) {
+    background-image: url($url);
+    background-size: $size;
+    background-position: $p;
+    background-repeat: $r;
 }

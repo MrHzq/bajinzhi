@@ -1,0 +1,19 @@
+@import './flex';
+.login {
+    .type {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        @include c9;
+    }
+    .h-button {
+        width: 100% !important;
+        margin-top: 10px;
+        box-shadow: 0px 7px 27px 0px rgba(51, 152, 255, 0.3);
+    }
+    .el-input {
+        & /deep/ .el-input__suffix {
+            right: 20px;
+        }
+    }
+}

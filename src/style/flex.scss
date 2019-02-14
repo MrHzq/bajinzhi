@@ -2,23 +2,38 @@
  * @Author: hzq
  * @Date: 2019-01-12 11:09:34
  * @Last Modified by: hzq
- * @Last Modified time: 2019-01-12 17:08:03
+ * @Last Modified time: 2019-02-11 09:48:37
  * @文件说明: flex布局 混入
  */
-@mixin flex($ai: center, $jc: center, $fd: row, $fw: wrap) {
+@mixin flex($jc: center, $ai: center, $fd: row, $fw: wrap) {
     display: flex;
-    display: -webkit-flex;
     flex-wrap: $fw;
     align-items: $ai;
-    -webkit-align-items: $ai;
     justify-content: $jc;
-    -webkit-justify-content: $jc;
     flex-direction: $fd;
 }
-@mixin flex-a {
-    @include flex($jc: space-around);
+
+// flex：左对齐
+@mixin flex-s($ai: center, $fd: row) {
+    @include flex(flex-start, $ai, $fd);
 }
 
-@mixin flex-b {
-    @include flex($jc: space-between);
+// flex：右对齐
+@mixin flex-e($ai: center, $fd: row) {
+    @include flex(flex-end, $ai, $fd);
+}
+
+// flex：居中对齐
+@mixin flex-c($ai: center, $fd: row) {
+    @include flex(center, $ai, $fd);
+}
+
+// flex：两端对齐
+@mixin flex-a($ai: center, $fd: row) {
+    @include flex(space-around, $ai, $fd);
+}
+
+// flex：每个项目两侧的间隔相等
+@mixin flex-b($ai: center, $fd: row) {
+    @include flex(space-between, $ai, $fd);
 }
