@@ -2,7 +2,7 @@
  * @Author: chenjie
  * @Date: 2019-02-14 13:37:58
  * @Last Modified by: hzq
- * @Last Modified time: 2019-02-14 15:53:36
+ * @Last Modified time: 2019-03-15 09:42:12
  * @文件说明: 首页
  */
 
@@ -23,4 +23,5 @@
     }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

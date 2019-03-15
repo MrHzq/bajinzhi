@@ -20,13 +20,66 @@ Vue.use(echarts)
 Vue.prototype.Clipboard = Clipboard
 Vue.prototype.$echarts = echarts
 Vue.prototype.$alonePageArr = store.state.alonePageArr
-Vue.prototype.$msg = (message, type) => {
-    if (type === 's') {
+
+// 页面后退
+Vue.prototype.$go = () => router.go(-1)
+// 页面跳转
+Vue.prototype.$to = (path, query = {}) => router.push({ path, query })
+
+// Element 消息提示方法
+Vue.prototype.$msg = (message, success = false) => {
+    if (success) {
         Vue.prototype.$message({ message, type: 'success' })
     } else Vue.prototype.$message.error(message)
 }
-Vue.prototype.$to = (path, query = {}) => router.push({ path, query })
-Vue.prototype.$go = () => router.go(-1)
+// Element 删除弹窗提示方法
+Vue.prototype.$del = (params = {}) => {
+    params = Object.assign(
+        {
+            title: '提示',
+            text: '是否确认删除？',
+            no() {},
+            ok() {}
+        },
+        params
+    )
+    Vue.prototype
+        .$confirm(params.text, params.title, {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+        })
+        .then(() => params.ok())
+        .catch(() => params.no())
+}
+
+// 响应成功，消息处理提示
+Vue.prototype.$resmsg = (res, ok, no) => {
+    if (res.code === 1) {
+        Vue.prototype.$msg('保存成功', 's')
+        if (typeof ok === 'function') ok()
+    } else {
+        Vue.prototype.$msg('保存失败，请重新操作')
+        if (typeof no === 'function') no()
+    }
+}
+
+// 重置对象为空
+Vue.prototype.$reset = (data, type = 'obj') => {
+    data = Vue.prototype.$copy(data)
+    if (type === 'obj') {
+        for (const k in data) {
+            if (typeof data[k] === 'object') {
+                if (Array.isArray(data[k])) {
+                    console.log(data[k])
+                } else data[k] = Vue.prototype.$reset(data[k])
+            } else data[k] = ''
+        }
+    } else if (type === 'json') {
+        data = data.map(d => Vue.prototype.$reset(d))
+    }
+    return data
+}
 
 // 金额格式化：加 ￥ 和2位小数点
 Vue.prototype.$formatPrice = val => {
@@ -36,7 +89,7 @@ Vue.prototype.$formatPrice = val => {
 }
 
 Vue.use(hzqAxios, require.context('@/api-url', true, /\.js$/), {
-    baseURL: '',
+    baseURL: 'htt',
     beforeRequest(config) {
         //     if (config.method != 'get') {
         //         config.data = qs.stringify(config.data)
